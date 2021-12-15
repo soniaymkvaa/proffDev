@@ -44,8 +44,6 @@ def show_notes(file:str)->None:
 def ask_priority()->str:
     """
     ask priority to the task
-    >>> type(ask_priority())
-    str
     """
     print("Give a priority to this task")
     priority = input()
@@ -56,7 +54,7 @@ def check_day(note:list,calendar_notes:list)->bool:
     check if you have othes notes with same deadline
     >>> check_day(['2021-12-15 11:42:46.433451', 'Birthday', 'nothing', '2021-12-17 15:42:46.433451', '1'],\
 [['2021-12-15 11:42:46.433451', 'Birthday', 'nothing', '2021-12-17 15:42:46.433451', '1']])
-    False
+    True
     """
     deadlines = []
     for each in calendar_notes:
