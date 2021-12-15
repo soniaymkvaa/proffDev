@@ -22,6 +22,11 @@ def create_note(name, need_list,deadline,file):
         for task in calendar_notes:
             csvfile.write(','.join(task) + '\n')
 
+def show_notes(file):
+    calendar_notes = open_csv_calendar(file)
+    for note in calendar_notes:
+        print(f"date: {note[0]} ]name: {note[1]} need: {note[2]} deadline: {note[3]} priority: {note[4]}\n")
+
 def ask_priority():
         print("Give a priority to this task")
         priority = input()
