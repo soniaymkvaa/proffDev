@@ -49,9 +49,9 @@ def ask_priority()->str:
     >>> type(ask_priority())
     str
     """
-        print("Give a priority to this task")
-        priority = input()
-        return priority
+    print("Give a priority to this task")
+    priority = input()
+    return priority
 
 def check_day(note:list,calendar_notes:list)->bool:
     """
