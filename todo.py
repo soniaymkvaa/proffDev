@@ -25,7 +25,24 @@ def create_note(name, need_list,deadline,file):
 def ask_priority():
         print("Give a priority to this task")
         priority = input()
-        return priority   
+        return priority
+    
+def check_day(note:list):
+    deadlines = []
+    for each in note:
+        if each[3].split()[0] == str(datetime.now()).split()[0]:
+            deadlines.append(each)
+    deadlines.sort(key=lambda lst: lst[4])
+    return True if len(deadlines) == 0 else False
+
+def show_deadlines(note:list):
+    deadlines = []
+    for each in note:
+        if each[3].split()[0] == str(datetime.now()).split()[0]:
+            deadlines.append(each)
+    deadlines.sort(key=lambda lst: lst[4])
+    for each in deadlines:
+        print(f'The {each[1]} event with priority {each[4]} is assigned on today. The needlist is: {each[2]}')    
 # def ask_priority():
 #     pass
 # def check_day(note):
