@@ -7,7 +7,11 @@ def main():
         command = input()
         command = command.split(' ')
         if command[0] == 'create':
-            todo.create_note(*command[1:3],' '.join(command[3:5]), 'calendar.csv')     
+            todo.create_note(*command[1:3],' '.join(command[3:5]), 'calendar.csv')  
+        elif command[0] == "show":
+            todo.show_notes('calendar.csv') 
+        elif command[0] == "exit":
+            quit()
     # def ask_priority():
     #     print("Give a priority to this task")
     #     priority = input()
