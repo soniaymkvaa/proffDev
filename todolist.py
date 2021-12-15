@@ -1,7 +1,7 @@
 import todo
-def main():
-    # here will be a function that shows all the deadlines
-    # name, 
+
+def main()->None:
+    """handles main loop and general work and input in terminal"""
     running = True
     while running:
         command = input()
@@ -12,10 +12,6 @@ def main():
             todo.show_notes('calendar.csv') 
         elif command[0] == "exit":
             quit()
-    # def ask_priority():
-    #     print("Give a priority to this task")
-    #     priority = input()
-    #     return priority
 
 if __name__ == "__main__":
     main()
