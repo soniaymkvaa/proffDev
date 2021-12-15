@@ -1,10 +1,15 @@
 """my part of todo project for interacting with csv in order to terminal commands"""
+
 import csv
-import time
 from datetime import datetime
-def open_csv_calendar(filepath):
+
+def open_csv_calendar(filepath:str)->list:
     """
     open csv file and read notes from it
+    >>> open_csv_calendar('calendar.csv')
+    [['2021-12-15 11:42:46.433451', 'Birthday', 'nothing', '2021-12-17 15:42:46.433451', '1'], \
+['2021-12-13 11:42:46.433451', 'shoping', 'money', '2021-12-20 12:42:46.433451', '1'], \
+['2021-12-15 12:08:45.535348', 'new one', 'nothing', '2021-12-20 12:42:46.433451', '1']]
     """
     calendar_notes = []
     with open(filepath,'r') as csvfile:
@@ -13,9 +18,11 @@ def open_csv_calendar(filepath):
             calendar_notes.append(row)
     return calendar_notes
 
-def create_note(name, need_list,deadline,file):
+def create_note(name:str, need_list:str,deadline:str,file:str)->None:
     """
     create new note
+    >>> create_note('new one', 'nothing', '2021-12-20 12:42:46.433451','calendar.csv')
+    
     """
     note = [str(datetime.now()),name,need_list,deadline,str(1)]
     calendar_notes = open_csv_calendar(file)
@@ -28,7 +35,7 @@ def create_note(name, need_list,deadline,file):
         for task in calendar_notes:
             csvfile.write(','.join(task) + '\n')
 
-def show_notes(file):
+def show_notes(file:str)->None:
     """
     print each line in note
     """
@@ -36,17 +43,22 @@ def show_notes(file):
     for note in calendar_notes:
         print(f"date: {note[0]} ]name: {note[1]} need: {note[2]} deadline: {note[3]} priority: {note[4]}\n")
 
-def ask_priority():
+def ask_priority()->str:
     """
     ask priority to the task
+    >>> type(ask_priority())
+    str
     """
         print("Give a priority to this task")
         priority = input()
         return priority
 
-def check_day(note:list,calendar_notes):
+def check_day(note:list,calendar_notes:list)->bool:
     """
     check if you have othes notes with same deadline
+    >>> check_day(['2021-12-15 11:42:46.433451', 'Birthday', 'nothing', '2021-12-17 15:42:46.433451', '1'],\
+[['2021-12-15 11:42:46.433451', 'Birthday', 'nothing', '2021-12-17 15:42:46.433451', '1']])
+    True
     """
     deadlines = []
     for each in calendar_notes:
@@ -55,9 +67,11 @@ def check_day(note:list,calendar_notes):
     deadlines.sort(key=lambda lst: lst[4])
     return True if len(deadlines) == 0 else False
 
-def show_deadlines(note:list):
+def show_deadlines(note:list)->None:
     """
     print all deadlines
+    >>> show_deadlines(['2021-12-15 11:42:46.433451', 'Birthday', 'nothing', '2021-12-17 15:42:46.433451', '1'])
+    
     """
     deadlines = []
     for each in note:
@@ -70,3 +84,5 @@ def show_deadlines(note:list):
 
 if __name__ == "__main__":
     create_note('new one', 'nothing', '2021-12-20 12:42:46.433451','calendar.csv')
+    import doctest
+    print(doctest.testmod())
