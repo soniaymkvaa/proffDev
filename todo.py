@@ -21,8 +21,6 @@ def open_csv_calendar(filepath:str)->list:
 def create_note(name:str, need_list:str,deadline:str,file:str)->None:
     """
     create new note
-    >>> create_note('new one', 'nothing', '2021-12-20 12:42:46.433451','calendar.csv')
-    
     """
     note = [str(datetime.now()),name,need_list,deadline,str(1)]
     calendar_notes = open_csv_calendar(file)
@@ -58,7 +56,7 @@ def check_day(note:list,calendar_notes:list)->bool:
     check if you have othes notes with same deadline
     >>> check_day(['2021-12-15 11:42:46.433451', 'Birthday', 'nothing', '2021-12-17 15:42:46.433451', '1'],\
 [['2021-12-15 11:42:46.433451', 'Birthday', 'nothing', '2021-12-17 15:42:46.433451', '1']])
-    True
+    False
     """
     deadlines = []
     for each in calendar_notes:
@@ -70,8 +68,6 @@ def check_day(note:list,calendar_notes:list)->bool:
 def show_deadlines(note:list)->None:
     """
     print all deadlines
-    >>> show_deadlines(['2021-12-15 11:42:46.433451', 'Birthday', 'nothing', '2021-12-17 15:42:46.433451', '1'])
-    
     """
     deadlines = []
     for each in note:
