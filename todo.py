@@ -77,6 +77,5 @@ def show_deadlines(note:list)->None:
 
 
 if __name__ == "__main__":
-    create_note('new one', 'nothing', '2021-12-20 12:42:46.433451','calendar.csv')
     import doctest
     print(doctest.testmod())
